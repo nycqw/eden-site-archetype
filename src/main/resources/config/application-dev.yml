@@ -1,0 +1,23 @@
+server:
+  port: 8084
+
+spring:
+  redis:
+     database: 0
+     host: 192.168.0.103
+     port: 6379
+     password: Asd09876%
+     timeout: 1000 # 连接超时时间
+     jedis:
+       pool:
+        max-active: 8 # 最大连接数
+        max-wait: -1  # 最大阻塞等待时间（负数表示没有限制）
+        max-idle: 5 # 最大空闲连接数
+        min-idle: 0 # 最小空闲连接数
+
+logging:
+  path: /data/eden-site-archetype/logs
+  level:
+    root: info
+    com.alibaba: error
+    org.apache: error

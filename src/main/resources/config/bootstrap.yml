@@ -1,0 +1,38 @@
+server:
+  servlet:
+    context-path: /eden-site-archetype
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: eden-site-archetype
+  main:
+    allow-bean-definition-overriding: true
+
+dubbo:
+  application:
+    qos-enable: false
+  scan:
+    base-packages: com.eden.site.service
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+  registry:
+    # 挂载到springCloud 注册中心，无需修改
+    address: spring-cloud://localhost
+
+---
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 182.61.45.92:8848
+        namespace: ca82e672-32b9-4c9f-a7bf-e8395f5d5780
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: 182.61.45.92:8848
+        namespace: ca82e672-32b9-4c9f-a7bf-e8395f5d5780
